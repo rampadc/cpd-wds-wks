@@ -18,7 +18,6 @@ metadata:
 spec:
   sourceType: grpc
   image: docker.io/ibmcom/ibm-db2uoperator-catalog:latest
-  imagePullPolicy: Always
   displayName: IBM Db2U Catalog
   publisher: IBM
   updateStrategy:
