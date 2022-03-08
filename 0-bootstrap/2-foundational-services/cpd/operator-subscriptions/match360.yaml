@@ -1,0 +1,17 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  labels:
+    app.kubernetes.io/instance: ibm-mdm-operator-subscription
+    app.kubernetes.io/managed-by: ibm-mdm-operator
+    app.kubernetes.io/name: ibm-mdm-operator-subscription
+  name: ibm-mdm-operator-subscription
+  namespace: cpd-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "202"
+spec:
+  channel: v1.1
+  installPlanApproval: Automatic
+  name: ibm-mdm
+  source: ibm-operator-catalog
+  sourceNamespace: openshift-marketplace

@@ -1,0 +1,14 @@
+apiVersion: operator.ibm.com/v1
+kind: NamespaceScope
+metadata:
+  name: cpd-operators
+   # (Default) Replace with the Cloud Pak for Data platform operator project name 
+  namespace: cpd-operators     
+  annotations:
+    argocd.argoproj.io/sync-wave: "202"  
+spec:
+  csvInjector:                    
+    enable: true
+  namespaceMembers:
+  # (Default) Replace with the Cloud Pak for Data platform operator project name
+  - cpd-operators                 

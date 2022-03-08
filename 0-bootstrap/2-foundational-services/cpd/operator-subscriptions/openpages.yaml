@@ -1,0 +1,13 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: ibm-cpd-openpages-operator
+  namespace: cpd-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "202"
+spec:
+  channel: v1.0
+  installPlanApproval: Automatic
+  name: ibm-cpd-openpages-operator
+  source: ibm-operator-catalog
+  sourceNamespace: openshift-marketplace

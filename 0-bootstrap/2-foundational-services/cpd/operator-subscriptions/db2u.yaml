@@ -1,0 +1,46 @@
+# https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=tasks-creating-operator-subscriptions
+#
+# For specialised installations only:
+# 
+# By default, IBM Cloud Pak foundational services expects that the Db2U operator 
+# (ibm-db2u-operator) is installed in the ibm-common-services project. 
+# However, if you are using the specialized installation architecture 
+# (where the IBM Cloud Pak foundational services operators and Cloud Pak for Data 
+# operators are in separate OpenShift projects), you must edit the IBM Cloud Pak 
+# foundational services operand registry to point to the project where the Cloud Pak 
+# for Data operators are installed:
+#
+# `oc edit operandRegistry common-service --namespace ibm-common-services`
+#
+# Change the value of the namespace entry for the ibm-db2u-operator. Specify the 
+# OpenShift project where the Cloud Pak for Data operators are installed, for example, 
+# cpd-operators:
+# 
+#  - channel: v1.1
+#     installPlanApproval: Automatic
+#     name: ibm-db2u-operator
+#     namespace: cpd-operators    # Specify the project where the Cloud Pak for Data operators are installed
+#     packageName: db2u-operator
+#     scope: public
+#     sourceName: ibm-db2uoperator-catalog
+#     sourceNamespace: openshift-marketplace
+# 
+# Required for:
+# - data virt
+# - db2 big sql
+# - db2 warehouse
+# - watson knowledge catalog
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: ibm-db2u-operator
+  namespace: cpd-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "202"
+spec:
+  channel: v1.1
+  name: db2u-operator
+  installPlanApproval: Automatic
+  source: ibm-operator-catalog
+  sourceNamespace: openshift-marketplace
