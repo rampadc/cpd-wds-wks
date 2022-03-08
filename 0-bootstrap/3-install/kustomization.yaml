@@ -1,0 +1,17 @@
+resources:
+ - cpd/namespace-scope.yaml
+ - cpd/ibmcpd.yaml
+ - cpd/services/watson-discovery.yaml
+ - cpd/services/watson-knowledge-studio.yaml
+patches:
+- target:
+    group: argoproj.io
+    kind: Application
+    labelSelector: "gitops.tier.layer=gitops"
+  patch: |-
+    - op: add
+      path: /spec/source/repoURL
+      value: https://github.com/rampadc/cpd-wds-wks.git
+    - op: add
+      path: /spec/source/targetRevision
+      value: master

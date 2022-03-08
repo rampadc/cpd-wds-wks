@@ -1,0 +1,15 @@
+apiVersion: cpd.ibm.com/v1
+kind: Ibmcpd
+metadata:
+  # This is the recommended name, but you can change it
+  name: ibmcpd-cr                        
+  # Replace with the project where you will install Cloud Pak for Data
+  namespace: cpd-instance   
+  annotations:
+    argocd.argoproj.io/sync-wave: "301"             
+spec:
+  license:
+    accept: true
+    # Enterprise | Standard
+    license: Enterprise
+  storageVendor: ocs

@@ -1,0 +1,20 @@
+apiVersion: operator.ibm.com/v1
+kind: NamespaceScope
+metadata:
+  name: cpd-operators
+  # (Default) Replace with the Cloud Pak for Data platform operator project name 
+  namespace: cpd-operators    
+  annotations:
+    argocd.argoproj.io/sync-wave: "300"    
+spec:
+  # This setting is required for some services. 
+  # Do not delete this line if you specified it when you created operator subscriptions. 
+  csvInjector:                  
+    # This setting is required for some services. 
+    # Do not delete this line if you specified it when you created operator subscriptions.  
+    enable: true                
+  namespaceMembers:
+  # (Default) Replace with the Cloud Pak for Data platform operator project name
+  - cpd-operators                 
+  # Replace with the project where you will install Cloud Pak for Data
+  - cpd-instance                  

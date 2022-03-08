@@ -1,0 +1,14 @@
+apiVersion: knowledgestudio.watson.ibm.com/v1
+kind: KnowledgeStudio
+metadata:
+  name: wks
+  namespace: cpd-instance
+spec:
+  license:
+    accept: true
+  global: 
+    storageClassName: ocs-storagecluster-ceph-rbd
+    size: small
+  awt:
+    persistentVolume:
+      storageClassName: ocs-storagecluster-cephfs
