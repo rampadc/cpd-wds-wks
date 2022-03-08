@@ -7,4 +7,15 @@ resources:
  - cpd/operatorgroup-ibm-common-services.yaml
  - cpd/catalogsource-ibm-operator-catalog.yaml
  - cpd/catalogsource-ibm-db2uoperator-catalog.yaml
-
+patches:
+- target:
+    group: argoproj.io
+    kind: Application
+    labelSelector: "gitops.tier.layer=gitops"
+  patch: |-
+    - op: add
+      path: /spec/source/repoURL
+      value: https://github.com/rampadc/cpd-wds-wks.git
+    - op: add
+      path: /spec/source/targetRevision
+      value: master

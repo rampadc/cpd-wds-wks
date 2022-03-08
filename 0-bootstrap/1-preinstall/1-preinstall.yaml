@@ -6,7 +6,7 @@ metadata:
   labels:
     gitops.tier.layer: preinstall
 spec:
-  sourceRepos: [] # Populated by kustomize patches in 1-infra/kustomization.yaml
+  sourceRepos: [] # Populated by kustomize patches in 1-preinstall/kustomization.yaml
   destinations:
   - namespace: '*'
     server: https://kubernetes.default.svc
@@ -35,7 +35,7 @@ spec:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: preinstall
-  source: # repoURL  and targetRevision populated by kustomize patches in 1-infra/kustomization.yaml
+  source: # repoURL  and targetRevision populated by kustomize patches in 1-preinstall/kustomization.yaml
     path: 0-bootstrap/1-preinstall
   syncPolicy:
     automated:
