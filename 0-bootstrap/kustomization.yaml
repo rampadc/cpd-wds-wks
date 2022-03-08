@@ -12,4 +12,14 @@ patches:
     - op: add
       path: /spec/source/targetRevision
       value: master
-
+- target:
+    group: argoproj.io
+    kind: AppProject
+    labelSelector: "gitops.tier.layer=preinstall"
+  patch: |-
+    - op: add
+      path: /spec/sourceRepos/-
+      value: https://github.com/rampadc/cpd-wds-wks.git
+    - op: add
+      path: /spec/sourceRepos/-
+      value: master
