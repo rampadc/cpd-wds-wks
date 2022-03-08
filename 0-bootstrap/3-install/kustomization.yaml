@@ -1,7 +1,7 @@
 resources:
  - cpd/ibmcpd.yaml
 #  - cpd/services/watson-discovery.yaml
- - cpd/services/watson-knowledge-studio.yaml
+#  - cpd/services/watson-knowledge-studio.yaml
 patches:
 - target:
     group: argoproj.io
