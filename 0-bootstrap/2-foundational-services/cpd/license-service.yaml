@@ -13,6 +13,8 @@ kind: OperandRequest
 metadata:
   name: common-service-license
   namespace: cpd-instance     # Replace with the project where you will install Cloud Pak for Data
+  annotations:
+    argocd.argoproj.io/sync-wave: "201"
 spec:
   requests:
   - operands:
