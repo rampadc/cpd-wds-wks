@@ -6,6 +6,18 @@ rules:
   - verbs:
       - '*'
     apiGroups:
+      - 'discovery.watson.ibm.com'
+    resources:
+      - 'watsondiscoveries'
+  - verbs:
+      - '*'
+    apiGroups:
+      - 'knowledgestudio.watson.ibm.com'
+    resources:
+      - 'knowledgestudios'
+  - verbs:
+      - '*'
+    apiGroups:
       - 'operator.ibm.com'
     resources:
       - 'operandrequests'
