@@ -11,4 +11,5 @@ spec:
     enable: true
   namespaceMembers:
   # (Default) Replace with the Cloud Pak for Data platform operator project name
-  - cpd-operators                 
+  - cpd-operators             
+  - cpd-instance    
