@@ -1,5 +1,6 @@
 resources:
  - cpd/subscription-ibm-common-services.yaml
+ - cpd/license-service.yaml
 patches:
 - target:
     group: argoproj.io
