@@ -1,12 +1,5 @@
 resources:
- - cpd/ns-cpd-instance-tether.yaml
- - cpd/ns-cpd-instance.yaml
- - cpd/ns-cpd-operators.yaml
- - cpd/ns-ibm-common-services.yaml
- - cpd/operatorgroup-cpd-operators.yaml
- - cpd/operatorgroup-ibm-common-services.yaml
- - cpd/catalogsource-ibm-operator-catalog.yaml
- - cpd/catalogsource-ibm-db2uoperator-catalog.yaml
+ - cpd/subscription-ibm-common-services.yaml
 patches:
 - target:
     group: argoproj.io
