@@ -145,12 +145,10 @@ To get an entitlement key:
 - Create a **Secret** containing the entitlement key within the `ibm-infra-automation` namespace.
 
     ```bash
-    oc new-project ibm-infra-automation || true
-    oc create secret docker-registry ibm-entitlement-key -n ibm-infra-automation \
+    oc create secret docker-registry ibm-entitlement-key -n openshift-marketplace \
     --docker-username=cp \
     --docker-password="<entitlement_key>" \
-    --docker-server=cp.icr.io \
-    --docker-email=myemail@ibm.com
+    --docker-server=cp.icr.io
     ```
 
 ## Setup git repositories

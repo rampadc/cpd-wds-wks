@@ -1,0 +1,27 @@
+# https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=ccs-creating-catalog-sources-that-automatically-pull-latest-images-from-entitled-registry
+# Attention: Automatically pulling the latest images from the IBM Entitled Registry 
+# is not recommended for deployments where predictability and stability are important,
+# such as production environments. This option is recommended only for short-term 
+# installations, such as proof-of-concept deployments.
+# If you choose to automatically pull the latest images from the IBM Entitled Registry,
+# the software on your cluster could be updated at any time. This can be especially
+# problematic if newer and incompatible versions of dependencies are automatically
+# installed on your cluster.
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: ibm-operator-catalog
+  namespace: openshift-marketplace
+  annotations:
+    argocd.argoproj.io/sync-wave: "102"
+spec:
+  displayName: "IBM Operator Catalog" 
+  publisher: IBM
+  sourceType: grpc
+  image: icr.io/cpopen/ibm-operator-catalog:latest
+  updateStrategy:
+    registryPoll:
+      interval: 45m
+  secrets:
+  - "ibm-entitlement-key"
