@@ -5,16 +5,16 @@
 ---
 resources:
  - cpd/subscription-ibm-common-services.yaml
- - cpd/license-service.yaml
- - cpd/operator-subscriptions/scheduling-service.yaml
- - cpd/operator-subscriptions/cpd-operator.yaml
- - cpd/operator-subscriptions/cpd-operator-ns-scoped.yaml
- - cpd/operator-subscriptions/csv-injector.yaml
+#  - cpd/license-service.yaml
+#  - cpd/operator-subscriptions/scheduling-service.yaml
+#  - cpd/operator-subscriptions/cpd-operator.yaml
+#  - cpd/operator-subscriptions/cpd-operator-ns-scoped.yaml
+#  - cpd/operator-subscriptions/csv-injector.yaml
  
- - cpd/edb-postgres-opreq.yaml
- - cpd/operator-subscriptions/edb-postgres.yaml
- - cpd/operator-subscriptions/watson-knowledge-studio.yaml
- - cpd/operator-subscriptions/watson-discovery.yaml
+#  - cpd/edb-postgres-opreq.yaml
+#  - cpd/operator-subscriptions/edb-postgres.yaml
+#  - cpd/operator-subscriptions/watson-knowledge-studio.yaml
+#  - cpd/operator-subscriptions/watson-discovery.yaml
 patches:
 - target:
     group: argoproj.io
