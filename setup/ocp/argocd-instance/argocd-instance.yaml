@@ -51,6 +51,7 @@ spec:
             hs.status = "Healthy"
             hs.message = "Catalog source is ready"
             return hs
+          end
         end
         hs.status = "Progressing"
         hs.message = "Waiting for catalog source to be ready"
