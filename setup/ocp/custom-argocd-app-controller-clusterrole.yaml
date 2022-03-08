@@ -6,6 +6,12 @@ rules:
   - verbs:
       - '*'
     apiGroups:
+      - 'cpd.ibm.com'
+    resources:
+      - 'ibmcpds'
+  - verbs:
+      - '*'
+    apiGroups:
       - 'discovery.watson.ibm.com'
     resources:
       - 'watsondiscoveries'
