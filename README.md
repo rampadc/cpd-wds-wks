@@ -147,7 +147,17 @@ To get an entitlement key:
     ```bash
     oc create secret docker-registry ibm-entitlement-key -n openshift-marketplace \
     --docker-username=cp \
-    --docker-password="<entitlement_key>" \
+    --docker-password="${ENTITLEMENT_KEY}" \
+    --docker-server=cp.icr.io
+
+    oc create secret docker-registry ibm-entitlement-key -n cpd-operators \
+    --docker-username=cp \
+    --docker-password="${ENTITLEMENT_KEY}" \
+    --docker-server=cp.icr.io
+
+    oc create secret docker-registry ibm-entitlement-key -n cpd-instance \
+    --docker-username=cp \
+    --docker-password="${ENTITLEMENT_KEY}" \
     --docker-server=cp.icr.io
     ```
 
