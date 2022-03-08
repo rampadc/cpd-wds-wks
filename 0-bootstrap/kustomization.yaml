@@ -11,5 +11,5 @@ patches:
       value: https://github.com/rampadc/cpd-wds-wks.git
     - op: add
       path: /spec/source/targetRevision
-      value: main
+      value: master
 
