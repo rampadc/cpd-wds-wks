@@ -9,6 +9,7 @@ rules:
       - 'operator.ibm.com'
     resources:
       - 'operandrequests'
+      - 'namespacescopes'
   - verbs:
       - '*'
     apiGroups:
