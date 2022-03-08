@@ -43,6 +43,19 @@ spec:
       enabled: false
   initialSSHKnownHosts: {}
   resourceCustomizations: |
+    operator.ibm.com/operandrequests:
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil then
+          if obj.status.phase == "Running" then
+            hs.status = "Healthy"
+            hs.message = "Operand request is ready"
+            return hs
+          end
+        end
+        hs.status = "Progressing"
+        hs.message = "Waiting for operand request to be ready"
+        return hs
     operators.coreos.com/catalogsources:
       health.lua: |
         hs = {}

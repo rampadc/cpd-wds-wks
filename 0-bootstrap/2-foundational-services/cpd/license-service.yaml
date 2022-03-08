@@ -1,0 +1,25 @@
+# https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=tasks-installing-cloud-pak-foundational-services
+# If you are installing any of the following services, it is recommended that you install the License Service:
+#
+#     Voice Gateway
+#     Watson™ Assistant
+#     Watson Discovery
+#     Watson Knowledge Studio
+#     Watson Speech to Text
+#     Watson Text to Speech
+---
+apiVersion: operator.ibm.com/v1alpha1
+kind: OperandRequest
+metadata:
+  name: common-service-license
+  namespace: cpd-instance     # Replace with the project where you will install Cloud Pak for Data
+spec:
+  requests:
+  - operands:
+      - name: ibm-licensing-operator
+        bindings:
+          public-api-upload:
+            secret: ibm-licensing-upload-token
+            configmap: ibm-licensing-upload-config
+    registry: common-service
+    registryNamespace: ibm-common-services     # Replace with the project where Cloud Pak foundational services are installed
