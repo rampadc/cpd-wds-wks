@@ -6,6 +6,12 @@ rules:
   - verbs:
       - '*'
     apiGroups:
+      - 'operator.ibm.com'
+    resources:
+      - 'operandrequests'
+  - verbs:
+      - '*'
+    apiGroups:
       - 'clusterview.open-cluster-management.io'
     resources: 
       - managedclusters
