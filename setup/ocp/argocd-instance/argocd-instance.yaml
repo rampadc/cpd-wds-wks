@@ -43,7 +43,73 @@ spec:
       enabled: false
   initialSSHKnownHosts: {}
   resourceCustomizations: |
-    operator.ibm.com/operandrequests:
+    cpd.ibm.com/Ibmcpd:
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil then
+          if obj.status.controlPlaneStatus == "InProgress" then
+            hs.status = "Progressing"
+            hs.message = "Waiting for CPD control plane to be ready"
+            return hs
+          elseif obj.status.controlPlaneStatus == "Completed" then
+            if obj.status.zenStatus == "InProgress" then
+              hs.status = "Progressing"
+              hs.message = "Waiting for ZenService to be ready. If >90 minutes, contact IBM support."
+              return hs
+            elseif obj.status.zenStatus == "Completed" then
+              hs.status = "Healthy"
+              hs.message = "IBM CPD deployed. Ready to deploy services."
+              return hs
+            elseif obj.status.zenStatus == "Failed." then
+              hs.status = "Degraded"
+              hs.message = "Contact IBM support."
+              return hs
+            end
+          elseif obj.status.controlPlaneStatus == "Failed" then
+            if obj.status.zenStatus == "InProgress" then
+              hs.status = "Progressing"
+              hs.message = "Waiting for ZenService to be ready. If >90 minutes, contact IBM support."
+              return hs
+            elseif obj.status.zenStatus == "Completed" then
+              hs.status = "Healthy"
+              hs.message = "IBM CPD deployed. Ready to deploy services."
+              return hs
+            elseif obj.status.zenStatus == "Failed." then
+              hs.status = "Degraded"
+              hs.message = "Contact IBM support."
+              return hs
+            end
+          end
+        end
+    discovery.watson.ibm.com/WatsonDiscovery:
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil then
+          if obj.status.watsonDiscoveryStatus == "Completed" then
+            hs.status = "Healthy"
+            hs.message = "Watson Discovery is ready"
+            return hs
+          end
+        end
+        hs.status = "Progressing"
+        hs.message = "Waiting for Watson Discovery to be ready"
+        return hs
+    knowledgestudio.watson.ibm.com/KnowledgeStudio:
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil and obj.status.conditions ~= nil then
+          for i, condition in ipairs(obj.status.conditions) do  
+            if condition.type == "Deployed" and condition.status == "True" then
+              hs.status = "Healthy"
+              hs.message = "Watson Knowledge Studio is deployed"
+              return hs
+            end
+          end
+        end
+        hs.status = "Progressing"
+        hs.message = "Waiting for managed cluster to be deploy."
+        return hs 
+    operator.ibm.com/OperandRequest:
       health.lua: |
         hs = {}
         if obj.status ~= nil then
@@ -56,7 +122,7 @@ spec:
         hs.status = "Progressing"
         hs.message = "Waiting for operand request to be ready"
         return hs
-    operators.coreos.com/catalogsources:
+    operators.coreos.com/CatalogSource:
       health.lua: |
         hs = {}
         if obj.status ~= nil then
