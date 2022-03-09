@@ -1,7 +1,7 @@
 resources:
  - 1-preinstall/1-preinstall.yaml
- - 2-foundational-services/2-foundational-services.yaml
- - 3-install/3-install.yaml
+#  - 2-foundational-services/2-foundational-services.yaml
+#  - 3-install/3-install.yaml
 patches:
 - target:
     group: argoproj.io
