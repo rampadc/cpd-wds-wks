@@ -47,7 +47,9 @@ To get an entitlement key:
 4. `export PULL_SECRET=<entitlement key>`
 5. `./scripts/setup-global-cluster-pull-secret`
 
-If you are using IBM Cloud ROKS with VPC Gen 2, navigate to your ROKS cluster Overview in IBM Cloud. Click on Worker Nodes, select all nodes and click on `Replace`. IBM Cloud ROKS VPC Gen2's nodes cannot be reloaded.
+If you are using IBM Cloud ROKS with VPC Gen 2, navigate to your ROKS cluster Overview in IBM Cloud as shown in the figure below. Click on Worker Nodes, select all nodes and click on `Replace`. IBM Cloud ROKS VPC Gen2's nodes cannot be reloaded.
+
+![reload](./doc/images/replace.png)
 
 Refer to instructions at https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=tasks-configuring-your-cluster-pull-images for reference.
 
