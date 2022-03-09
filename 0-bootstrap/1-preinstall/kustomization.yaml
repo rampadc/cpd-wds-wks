@@ -7,6 +7,7 @@ resources:
  - cpd/operatorgroup-ibm-common-services.yaml
  - cpd/catalogsource-ibm-operator-catalog.yaml
  - cpd/catalogsource-ibm-db2uoperator-catalog.yaml
+ - cpd/subscription-ibm-common-services.yaml
 patches:
 - target:
     group: argoproj.io

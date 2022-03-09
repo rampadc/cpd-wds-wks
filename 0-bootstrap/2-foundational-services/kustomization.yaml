@@ -4,7 +4,6 @@
 #
 ---
 resources:
- - cpd/subscription-ibm-common-services.yaml
  - cpd/license-service.yaml
  - cpd/operator-subscriptions/scheduling-service.yaml
  - cpd/operator-subscriptions/cpd-operator.yaml

@@ -4,7 +4,7 @@ metadata:
   name: ibm-common-service-operator
   namespace: ibm-common-services
   annotations:
-    argocd.argoproj.io/sync-wave: "200"
+    argocd.argoproj.io/sync-wave: "190"
 spec:
   channel: v3
   installPlanApproval: Automatic
