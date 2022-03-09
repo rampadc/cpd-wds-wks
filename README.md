@@ -6,6 +6,8 @@ This is not completely automated. ArgoCD Health checks for operator's subscripti
 
 ⚠️⚠️⚠️⚠️ **END WARNING** ⚠️⚠️⚠️⚠️
 
+Tested on IBM Cloud ROKS on VPC Gen 2 with ODF add-on.
+
 ## Pre-requisites ⬅️
 
 ### Red Hat OpenShift cluster ⭕
