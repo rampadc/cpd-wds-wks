@@ -43,44 +43,46 @@ spec:
       enabled: false
   initialSSHKnownHosts: {}
   resourceCustomizations: |
+    zen.cpd.ibm.com/ZenService:
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil and obj.status.zenStatus ~= nil then
+          if obj.status.zenStatus == "InProgress" then
+            hs.status = "Progressing"
+            hs.message = "Waiting for ZenService to be ready"
+          end
+          if obj.status.zenStatus == "Failed" then
+            hs.status = "Degraded"
+            hs.message = "Contact IBM support."
+          end
+          if obj.status.zenStatus == "Completed" then
+            hs.status = "Healthy"
+          end
+          return hs
+        end
+        hs.status = "Progressing"
+        hs.message = "Unknown"
+        return hs
     cpd.ibm.com/Ibmcpd:
       health.lua: |
         hs = {}
-        if obj.status ~= nil then
+        if obj.status ~= nil and obj.status.controlPlaneStatus ~= nil then
           if obj.status.controlPlaneStatus == "InProgress" then
             hs.status = "Progressing"
             hs.message = "Waiting for CPD control plane to be ready"
-            return hs
-          elseif obj.status.controlPlaneStatus == "Completed" then
-            if obj.status.zenStatus == "InProgress" then
-              hs.status = "Progressing"
-              hs.message = "Waiting for ZenService to be ready. If >90 minutes, contact IBM support."
-              return hs
-            elseif obj.status.zenStatus == "Completed" then
-              hs.status = "Healthy"
-              hs.message = "IBM CPD deployed. Ready to deploy services."
-              return hs
-            elseif obj.status.zenStatus == "Failed." then
-              hs.status = "Degraded"
-              hs.message = "Contact IBM support."
-              return hs
-            end
-          elseif obj.status.controlPlaneStatus == "Failed" then
-            if obj.status.zenStatus == "InProgress" then
-              hs.status = "Progressing"
-              hs.message = "Waiting for ZenService to be ready. If >90 minutes, contact IBM support."
-              return hs
-            elseif obj.status.zenStatus == "Completed" then
-              hs.status = "Healthy"
-              hs.message = "IBM CPD deployed. Ready to deploy services."
-              return hs
-            elseif obj.status.zenStatus == "Failed." then
-              hs.status = "Degraded"
-              hs.message = "Contact IBM support."
-              return hs
-            end
           end
+          if obj.status.controlPlaneStatus == "Failed" then
+            hs.status = "Degraded"
+            hs.message = "Contact IBM support."
+          end
+          if obj.status.controlPlaneStatus == "Completed" then
+            hs.status = "Healthy"
+          end
+          return hs
         end
+        hs.status = "Progressing"
+        hs.message = "Unknown"
+        return hs
     discovery.watson.ibm.com/WatsonDiscovery:
       health.lua: |
         hs = {}
