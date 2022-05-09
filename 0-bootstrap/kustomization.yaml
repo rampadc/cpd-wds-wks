@@ -1,49 +1,49 @@
 resources:
- - 1-preinstall/1-preinstall.yaml
- - 2-foundational-services/2-foundational-services.yaml
- - 3-install/3-install.yaml
+  - 1-preinstall/1-preinstall.yaml
+#  - 2-foundational-services/2-foundational-services.yaml
+#  - 3-install/3-install.yaml
 patches:
-- target:
-    group: argoproj.io
-    kind: Application
-    labelSelector: "gitops.tier.layer=gitops"
-  patch: |-
-    - op: add
-      path: /spec/source/repoURL
-      value: https://github.com/rampadc/cpd-wds-wks.git
-    - op: add
-      path: /spec/source/targetRevision
-      value: master
-- target:
-    group: argoproj.io
-    kind: AppProject
-    labelSelector: "gitops.tier.layer=preinstall"
-  patch: |-
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/rampadc/cpd-wds-wks.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: master
-- target:
-    group: argoproj.io
-    kind: AppProject
-    labelSelector: "gitops.tier.layer=foundational-services"
-  patch: |-
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/rampadc/cpd-wds-wks.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: master
-- target:
-    group: argoproj.io
-    kind: AppProject
-    labelSelector: "gitops.tier.layer=install"
-  patch: |-
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/rampadc/cpd-wds-wks.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: master
+  - target:
+      group: argoproj.io
+      kind: Application
+      labelSelector: "gitops.tier.layer=gitops"
+    patch: |-
+      - op: add
+        path: /spec/source/repoURL
+        value: https://github.com/rampadc/cpd-wds-wks.git
+      - op: add
+        path: /spec/source/targetRevision
+        value: master
+  - target:
+      group: argoproj.io
+      kind: AppProject
+      labelSelector: "gitops.tier.layer=preinstall"
+    patch: |-
+      - op: add
+        path: /spec/sourceRepos/-
+        value: https://github.com/rampadc/cpd-wds-wks.git
+      - op: add
+        path: /spec/sourceRepos/-
+        value: master
+  - target:
+      group: argoproj.io
+      kind: AppProject
+      labelSelector: "gitops.tier.layer=foundational-services"
+    patch: |-
+      - op: add
+        path: /spec/sourceRepos/-
+        value: https://github.com/rampadc/cpd-wds-wks.git
+      - op: add
+        path: /spec/sourceRepos/-
+        value: master
+  - target:
+      group: argoproj.io
+      kind: AppProject
+      labelSelector: "gitops.tier.layer=install"
+    patch: |-
+      - op: add
+        path: /spec/sourceRepos/-
+        value: https://github.com/rampadc/cpd-wds-wks.git
+      - op: add
+        path: /spec/sourceRepos/-
+        value: master
